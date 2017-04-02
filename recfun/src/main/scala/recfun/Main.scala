@@ -37,12 +37,15 @@ object Main {
    * Exercise 3
    */
     def countChange(money: Int, coins: List[Int]): Int = {
-      // take all distinct denominations in desc order, e.g. (100, 50, 25, 10, 5, 1) (desc order doesnt actually matter but easier to conceptualize)
+      var i = 0;
+      // take all distinct denominations in desc order, e.g. (100, 50, 25, 10, 5, 1)
       // plug in zero 100's, and recursively get the number of combinations with (50, 25, 10, 5, 1) that add to money
       // then plug in 1x100 and recursively get the number of combinations with (50, 25, 10, 5, 1) that add up to (money - 100)
       // ... etc
       // keep incrementing the 100's coefficient until we go past money and then we're done
       def tryCoefficient(partialSum: Int, coeff: Int, denoms: List[Int]): Int = {
+        i = i + 1
+        println(i + " steps")
         if (denoms.isEmpty) 0
         else if (partialSum + coeff * denoms.head == money) 1
         else if (partialSum + coeff * denoms.head > money) 0
