@@ -1,0 +1,1 @@
+books.flatMap(b => b.filter(b.author startsWith "Bird").map(a => b.title))
